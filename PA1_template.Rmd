@@ -32,7 +32,8 @@ library(dplyr)
 ```{r steps}
 grouppbyDay<-activity %>% group_by(date) %>%
         summarise(total_steps = sum(steps, na.rm = TRUE))
-
+```
+```{r plot,fig.height=4}
 hist(grouppbyDay$total_steps, xlab = "Total steps", col = "light blue",
      main = " Total number of steps per day")
 ```

@@ -45,12 +45,14 @@ library(dplyr)
 ```r
 grouppbyDay<-activity %>% group_by(date) %>%
         summarise(total_steps = sum(steps, na.rm = TRUE))
+```
 
+```r
 hist(grouppbyDay$total_steps, xlab = "Total steps", col = "light blue",
      main = " Total number of steps per day")
 ```
 
-![plot of chunk steps](figure/steps-1.png)
+![plot of chunk plot](figure/plot-1.png)
 
 
 Here, the mean of the total number of steps taken is 9354.2295082 and the median is 10395.
