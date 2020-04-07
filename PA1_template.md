@@ -36,8 +36,23 @@ as NA
 - interval: Identifier for the 5-minute interval in which measurement was taken
 
 ## What is mean total number of steps taken per day?
+The total number of steps was grouped daily and total steps per day was calculated using the dplyr package.
+
+```r
+library(dplyr)
+```
+
+```r
+grouppbyDay<-activity %>% group_by(date) %>%
+        summarise(total_steps = sum(steps, na.rm = TRUE))
+hist(grouppbyDay$total_steps, xlab = "Total steps", col = "light blue",
+     main = " Total number of steps per day")
+```
+
+![plot of chunk steps](figure/steps-1.png)
 
 
+Here, the mean of the total number of steps taken is 9354.2295082 and the median is 10395.
 
 ## What is the average daily activity pattern?
 
