@@ -249,6 +249,7 @@ as NA</li>
 
 <pre><code class="r">grouppbyDay&lt;-activity %&gt;% group_by(date) %&gt;%
         summarise(total_steps = sum(steps, na.rm = TRUE))
+
 hist(grouppbyDay$total_steps, xlab = &quot;Total steps&quot;, col = &quot;light blue&quot;,
      main = &quot; Total number of steps per day&quot;)
 </code></pre>
