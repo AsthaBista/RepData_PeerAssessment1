@@ -82,15 +82,9 @@ In the original datasets, there a lot of values in steps column that are missing
 
 
 ```r
-activityImp<-activity %>% mutate(step_new = ifelse(is.na(steps),as.numeric(groupbyInterval[
+activityImp<-activity %>% group_by(interval) %>%
+    mutate(step_new = ifelse(is.na(steps),as.numeric(groupbyInterval[
         which(groupbyInterval$interval==interval),2]),steps))
-```
-
-```
-## Error in ifelse(is.na(steps), as.numeric(groupbyInterval[which(groupbyInterval$interval == : 'list' object cannot be coerced to type 'double'
-```
-
-```r
 activityImp
 ```
 

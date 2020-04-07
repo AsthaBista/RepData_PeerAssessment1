@@ -68,7 +68,8 @@ missingNr<-sum(is.na(activity$steps))
 In the original datasets, there a lot of values in steps column that are missing. The total number of rows missing values of steps are `r missingNr`. The missing values can be imputed by filling the NAs with the mean steps in that 5-minute interval across all the days. 
 
 ```{r impute, warning=FALSE}
-activityImp<-activity %>% mutate(step_new = ifelse(is.na(steps),as.numeric(groupbyInterval[
+activityImp<-activity %>% group_by(interval) %>%
+    mutate(step_new = ifelse(is.na(steps),as.numeric(groupbyInterval[
         which(groupbyInterval$interval==interval),2]),steps))
 activityImp
 ```
