@@ -55,7 +55,6 @@ hist(grouppbyDay$total_steps, xlab = "Total steps", col = "light blue",
 
 ![plot of chunk plot](figure/plot-1.png)
 
-
 Here, the mean of the total number of steps taken is 9354.2295082 and the median is 10395.
 
 ## What is the average daily activity pattern?

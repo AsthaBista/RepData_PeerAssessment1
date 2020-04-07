@@ -42,7 +42,6 @@ hist(grouppbyDay$total_steps, xlab = "Total steps", col = "light blue",
 mean = mean(grouppbyDay$total_steps)
 median = median(grouppbyDay$total_steps)
 ```
-
 Here, the mean of the total number of steps taken is `r mean` and the median is `r median`.
 
 ## What is the average daily activity pattern?
@@ -55,7 +54,6 @@ groupbyInterval<-activity %>% group_by(interval) %>%
 g<-ggplot(groupbyInterval, aes(interval, average_steps))
 g + geom_line(color = "blue") + labs(x = "Minutes", y = "Average number of steps")+
         labs(title = "Average number of steps along a day") + theme_bw()
-
 
 ## Imputing missing values
 
