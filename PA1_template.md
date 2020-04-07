@@ -11,10 +11,21 @@ This device collects data at 5 minute intervals through out the day. The data co
 ### Loading and preprocessing the data
 The data for this assignment were downloaded from the course web site.
 
-```{r,warning=FALSE}
+
+```r
 uzData<- unzip("activity.zip")   # unzip the zipped file
 activity<-read.csv("activity.csv",na.strings = NA, header = TRUE)
 head(activity)
+```
+
+```
+##   steps       date interval
+## 1    NA 2012-10-01        0
+## 2    NA 2012-10-01        5
+## 3    NA 2012-10-01       10
+## 4    NA 2012-10-01       15
+## 5    NA 2012-10-01       20
+## 6    NA 2012-10-01       25
 ```
 Dataset: Activity monitoring data
 The variables included in this dataset are:
@@ -25,22 +36,8 @@ as NA
 - interval: Identifier for the 5-minute interval in which measurement was taken
 
 ## What is mean total number of steps taken per day?
-The total number of steps was grouped daily and total steps per day was calculated using the dplyr package.
-```{r dplyr, message=FALSE, warning=FALSE, results='hide'}
-library(dplyr)
-```
-```{r steps}
-grouppbyDay<-activity %>% group_by(date) %>%
-        summarise(total_steps = sum(steps, na.rm = TRUE))
-hist(grouppbyDay$total_steps, xlab = "Total steps", col = "light blue",
-     main = " Total number of steps per day")
-```
-```{r stats,echo = FALSE}
-mean = mean(grouppbyDay$total_steps)
-median = median(grouppbyDay$total_steps)
-```
 
-Here, the mean of the total number of steps taken is `r mean` and the median is `r median`.
+
 
 ## What is the average daily activity pattern?
 
