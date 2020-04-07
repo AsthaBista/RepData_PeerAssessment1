@@ -73,10 +73,10 @@ g + geom_line(color = "blue") + labs(x = "Minutes", y = "Average number of steps
 
 ![plot of chunk plot2](figure/plot2-1.png)
 
-```r
+Here, the number of steps reaches maximum at 835 minutes after taking an average across days.
+
 ## Imputing missing values
 
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```

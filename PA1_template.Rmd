@@ -54,6 +54,11 @@ groupbyInterval<-activity %>% group_by(interval) %>%
 g<-ggplot(groupbyInterval, aes(interval, average_steps))
 g + geom_line(color = "blue") + labs(x = "Minutes", y = "Average number of steps")+
         labs(title = "Average number of steps along a day") + theme_bw()
+```
+```{r interval, echo = FALSE}
+max = groupbyInterval[which.max(groupbyInterval$average_steps),1] 
+```
+Here, the number of steps reaches maximum at `r max` minutes after taking an average across days.
 
 ## Imputing missing values
 
