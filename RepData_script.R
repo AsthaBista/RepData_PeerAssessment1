@@ -7,7 +7,7 @@ library(ggplot2)
 uzData<- unzip("activity.zip")
 activity<-read.csv("activity.csv",na.strings = NA, header = TRUE)
 tbl_df(activity)
-View(activity)
+head(activity)
 
 ## What is mean total number of steps taken per day?
 grouppbyDay<-activity %>% group_by(date) %>%
