@@ -78,5 +78,914 @@ Here, the number of steps reaches maximum at 835 minutes after taking an average
 ## Imputing missing values
 
 
+In the original datasets, there a lot of values in steps column that are missing. The total number of rows missing values of steps are 2304. The missing values can be imputed by filling the NAs with the mean steps in that 5-minute interval across all the days. 
+
+
+```r
+activityImp<-activity %>% group_by(interval) %>%
+    mutate(step_new = ifelse(is.na(steps),as.numeric(groupbyInterval[
+        which(groupbyInterval$interval==interval),2]),steps))
+```
+
+```
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+
+## Warning in groupbyInterval$interval == interval: longer
+## object length is not a multiple of shorter object length
+```
+
+```r
+activityImp
+```
+
+```
+## # A tibble: 17,568 x 4
+## # Groups:   interval [288]
+##    steps date       interval step_new
+##    <int> <fct>         <int>    <dbl>
+##  1    NA 2012-10-01        0   1.72  
+##  2    NA 2012-10-01        5   0.340 
+##  3    NA 2012-10-01       10   0.132 
+##  4    NA 2012-10-01       15   0.151 
+##  5    NA 2012-10-01       20   0.0755
+##  6    NA 2012-10-01       25   2.09  
+##  7    NA 2012-10-01       30   0.528 
+##  8    NA 2012-10-01       35   0.868 
+##  9    NA 2012-10-01       40   0     
+## 10    NA 2012-10-01       45   1.47  
+## # ... with 17,558 more rows
+```
+Now, to check if there are missing values,
+
+```r
+anyNA(activityImp$step_new)   #Check for NA values
+```
+
+```
+## [1] FALSE
+```
+
+
+
+
 
 ## Are there differences in activity patterns between weekdays and weekends?

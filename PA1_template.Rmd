@@ -61,6 +61,24 @@ max = groupbyInterval[which.max(groupbyInterval$average_steps),1]
 Here, the number of steps reaches maximum at `r max` minutes after taking an average across days.
 
 ## Imputing missing values
+```{r missing,echo = FALSE}
+missingNr<-sum(is.na(activity$steps))
+```
+
+In the original datasets, there a lot of values in steps column that are missing. The total number of rows missing values of steps are `r missingNr`. The missing values can be imputed by filling the NAs with the mean steps in that 5-minute interval across all the days. 
+
+```{r impute}
+activityImp<-activity %>% group_by(interval) %>%
+    mutate(step_new = ifelse(is.na(steps),as.numeric(groupbyInterval[
+        which(groupbyInterval$interval==interval),2]),steps))
+activityImp
+```
+Now, to check if there are missing values,
+```{r check}
+anyNA(activityImp$step_new)   #Check for NA values
+```
+
+
 
 
 
