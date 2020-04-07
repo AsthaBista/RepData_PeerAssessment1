@@ -26,8 +26,9 @@ as NA
 
 ## What is mean total number of steps taken per day?
 The total number of steps was grouped daily and total steps per day was calculated using the dplyr package.
-```{r dplyr, message=FALSE, warning=FALSE, results='hide'}
+```{r packages, message=FALSE, warning=FALSE, results='hide'}
 library(dplyr)
+library(ggplot2)
 ```
 ```{r steps}
 grouppbyDay<-activity %>% group_by(date) %>%
@@ -45,7 +46,15 @@ median = median(grouppbyDay$total_steps)
 Here, the mean of the total number of steps taken is `r mean` and the median is `r median`.
 
 ## What is the average daily activity pattern?
-
+The time series of steps in a day can be determined by taking an average of the steps at each 5-minute interval in all number of days.
+```{r group}
+groupbyInterval<-activity %>% group_by(interval) %>%
+        summarise(average_steps = mean(steps, na.rm = TRUE))
+```
+```{r plot2, fig.height=4}
+g<-ggplot(groupbyInterval, aes(interval, average_steps))
+g + geom_line(color = "blue") + labs(x = "Minutes", y = "Average number of steps")+
+        labs(title = "Average number of steps along a day") + theme_bw()
 
 
 ## Imputing missing values
