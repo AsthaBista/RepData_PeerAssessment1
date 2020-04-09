@@ -58,6 +58,7 @@ abline(v=median(grouppbyDay$total_steps),col = "red", lty=2)
 
 ![plot of chunk plot](figure/plot-1.png)
 
+
 Here, the mean of the total number of steps taken is 9354.23 and the median is 10395.
 
 ## What is the average daily activity pattern?
