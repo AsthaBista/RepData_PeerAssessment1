@@ -127,19 +127,25 @@ anyNA(activity2$Steps_new)   #Check for NA values
 ```
 ## [1] FALSE
 ```
-The nnew dataframe has no missing values
+The new dataframe has no missing values
 
+
+```r
 # Now fnding the total number of steps in a day
 grouppbyDay2<-activity2 %>% group_by(Date) %>%
     summarise(total_steps = sum(Steps_new, na.rm = TRUE))
 
 # Plot histogram
-png("Total_steps_per_day_imputedData.png")
 hist(grouppbyDay2$total_steps, breaks = 30, xlab = "Total steps", col = "light blue",
      main = " Total number of steps per day")
 abline(v=mean(grouppbyDay2$total_steps),col = "red", lty=2)
 abline(v=median(grouppbyDay2$total_steps),col = "red", lty=2)
-dev.off()
+```
+
+![plot of chunk hist2](figure/hist2-1.png)
+
+Here, we can see that after removing the NAs from the dataframe, the mean at 10766.189 coincides with median 10766.189.
+
 
 
 
