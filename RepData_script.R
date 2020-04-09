@@ -87,7 +87,7 @@ g + geom_line(color = "blue") + labs(x = "Minutes",
     facet_grid(.~Day)
 dev.off()
 
-    
+#Done!    
     
     
     

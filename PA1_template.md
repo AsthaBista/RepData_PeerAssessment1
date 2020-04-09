@@ -1,6 +1,6 @@
 Reproducible Research: Peer Assessment 1
 ================================================================================ 
-## Introduction
+### Introduction
 It is now possible to collect a large amount of data about personal movement 
 using activity monitoring devices such as a Fitbit, Nike Fuelband, or Jawbone 
 Up. These type of devices are part of the “quantified self” movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But these data remain under-utilized both because the raw data are hard to obtain and there is a lack of statistical methods and software for processing and interpreting the data.
@@ -35,7 +35,7 @@ as NA
 - date: The date on which the measurement was taken in YYYY-MM-DD format
 - interval: Identifier for the 5-minute interval in which measurement was taken
 
-## What is mean total number of steps taken per day?
+### What is mean total number of steps taken per day?
 The total number of steps was grouped daily and total steps per day was calculated using the dplyr package.
 
 
@@ -61,8 +61,9 @@ abline(v=median(grouppbyDay$total_steps),col = "red", lty=2)
 
 Here, the mean of the total number of steps taken is 9354.23 and the median is 10395.
 
-## What is the average daily activity pattern?
+### What is the average daily activity pattern?
 The time series of steps in a day can be determined by taking an average of the steps at each 5-minute interval in all number of days.
+
 
 ```r
 groupbyInterval<-activity %>% group_by(interval) %>%
@@ -79,7 +80,7 @@ g + geom_line(color = "blue") + labs(x = "Minutes", y = "Average number of steps
 
 Here, the number of steps reaches maximum at 835 minutes after taking an average across days.
 
-## Imputing missing values
+### Imputing missing values
 
 
 In the original datasets, there a lot of values in steps column that are missing. The total number of rows missing values of steps are 2304. The missing values can be imputed by filling the NAs with the mean steps in that 5-minute interval across all the days. 
@@ -122,6 +123,7 @@ tbl_df(activity2)
 ```
 The above dataframe consists of all As imputed by the average number of steps for each interval. Now, to check if there are missing values,
 
+
 ```r
 anyNA(activity2$Steps_new)   #Check for NA values
 ```
@@ -148,7 +150,7 @@ abline(v=median(grouppbyDay2$total_steps),col = "red", lty=2)
 
 Here, we can see that after removing the NAs from the dataframe, the mean at 10766.189 coincides with median 10766.189. It seems like the weight of the values are balanced by imputing the NAs as the average of all days, making the mean coincide with the median.
 
-## Are there differences in activity patterns between weekdays and weekends?
+### Are there differences in activity patterns between weekdays and weekends?
 A new factor column was added that separated out the weekends from the weekdays.
 
 ```r
@@ -177,4 +179,5 @@ g + geom_line(color = "blue") + labs(x = "Minutes",
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 It looks like the number steps is more unsteady with lots of higher and lower values during weekends. It may mean that during weekends people are more likely to do more activities or just rest, in contrast to weekdays when the number of steps seem to be fairly consistent.
+    
     
