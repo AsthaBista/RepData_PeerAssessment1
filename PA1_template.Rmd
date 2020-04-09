@@ -93,7 +93,7 @@ anyNA(activity2$Steps_new)   #Check for NA values
 ```
 The new dataframe has no missing values
 
-```{r hist2}
+```{r hist2, fig.height=4}
 # Now fnding the total number of steps in a day
 grouppbyDay2<-activity2 %>% group_by(Date) %>%
     summarise(total_steps = sum(Steps_new, na.rm = TRUE))
