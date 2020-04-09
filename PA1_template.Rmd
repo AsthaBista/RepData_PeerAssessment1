@@ -103,7 +103,6 @@ hist(grouppbyDay2$total_steps, breaks = 30, xlab = "Total steps", col = "light b
      main = " Total number of steps per day")
 abline(v=mean(grouppbyDay2$total_steps),col = "red", lty=2)
 abline(v=median(grouppbyDay2$total_steps),col = "red", lty=2)
-
 ```
 ```{r stats2, echo= FALSE}
 options(scipen = 999, "digits"=3)
