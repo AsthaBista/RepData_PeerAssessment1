@@ -12,7 +12,7 @@ View(activity)
 ## What is mean total number of steps taken per day?
 grouppbyDay<-activity %>% group_by(date) %>%
     summarise(total_steps = sum(steps, na.rm = TRUE))
-png("Total_steps_per_day.png")
+png("./figure/Total_steps_per_day.png")
 hist(grouppbyDay$total_steps, breaks = 30, xlab = "Total steps", col = "light blue",
      main = " Total number of steps per day")
 abline(v=mean(grouppbyDay$total_steps),col = "red", lty=2)
@@ -24,7 +24,7 @@ median(grouppbyDay$total_steps)
 ## What is the average daily activity pattern?
 groupbyInterval<-activity %>% group_by(interval) %>%
     summarise(average_steps = mean(steps, na.rm = TRUE))
-png("Average_number_of_steps.png")
+png("./figure/Average_number_of_steps.png")
 g<-ggplot(groupbyInterval, aes(interval, average_steps))
 g + geom_line(color = "blue") + labs(x = "Minutes", 
                                      y = "Average number of steps")+
@@ -61,7 +61,7 @@ grouppbyDay2<-activity2 %>% group_by(Date) %>%
     summarise(total_steps = sum(Steps_new, na.rm = TRUE))
 
 # Plot histogram
-png("Total_steps_per_day_imputedData.png")
+png("./figure/Total_steps_per_day_imputedData.png")
 hist(grouppbyDay2$total_steps, breaks = 30, xlab = "Total steps", col = "light blue",
      main = " Total number of steps per day")
 abline(v=mean(grouppbyDay2$total_steps),col = "red", lty=2)
@@ -79,7 +79,7 @@ groupbyweek<-activity3 %>% group_by(Interval,Day) %>%
     summarise(average_steps = mean(Steps_new, na.rm = TRUE))
 
 # Plot the average steps for weekend and weekdays   
-png("Average_steps_per_week.png")
+png("./figure/Average_steps_per_week.png")
 g<-ggplot(groupbyweek, aes(Interval, average_steps))
 g + geom_line(color = "blue") + labs(x = "Minutes", 
                                      y = "Average number of steps")+
