@@ -49,8 +49,10 @@ grouppbyDay<-activity %>% group_by(date) %>%
 ```
 
 ```r
-hist(grouppbyDay$total_steps, xlab = "Total steps", col = "light blue",
+hist(grouppbyDay$total_steps, breaks = 30, xlab = "Total steps", col = "light blue",
      main = " Total number of steps per day")
+abline(v=mean(grouppbyDay$total_steps),col = "red", lty=2)
+abline(v=median(grouppbyDay$total_steps),col = "red", lty=2)
 ```
 
 ![plot of chunk plot](figure/plot-1.png)
@@ -82,39 +84,62 @@ In the original datasets, there a lot of values in steps column that are missing
 
 
 ```r
-activityImp<-activity %>% group_by(interval) %>%
-    mutate(step_new = ifelse(is.na(steps),as.numeric(groupbyInterval[
-        which(groupbyInterval$interval==interval),2]),steps))
-activityImp
+# Copy the original dataset into a new dataframe
+activity2<-activity
+
+# Loop around the new dataframe rows and substitute the NA places with mean of 
+# the steps per 5-minute interval across all days
+for(i in 1:nrow(activity2)){
+    if(is.na(activity2[i,1])){
+        activity2[i,4]<-as.numeric(groupbyInterval[which(groupbyInterval$interval
+                                                        ==activity2[i,3]),2])
+    }else{
+        activity2[i,4]<-activity2[i,1]
+    }
+}
+names(activity2)<-c("steps", "Date","Interval", "Steps_new")
+activity2<-select(activity2, Date:Steps_new)
+tbl_df(activity2)
 ```
 
 ```
-## # A tibble: 17,568 x 4
-## # Groups:   interval [288]
-##    steps date       interval step_new
-##    <int> <fct>         <int>    <dbl>
-##  1    NA 2012-10-01        0   1.72  
-##  2    NA 2012-10-01        5   0.340 
-##  3    NA 2012-10-01       10   0.132 
-##  4    NA 2012-10-01       15   0.151 
-##  5    NA 2012-10-01       20   0.0755
-##  6    NA 2012-10-01       25   2.09  
-##  7    NA 2012-10-01       30   0.528 
-##  8    NA 2012-10-01       35   0.868 
-##  9    NA 2012-10-01       40   0     
-## 10    NA 2012-10-01       45   1.47  
+## # A tibble: 17,568 x 3
+##    Date       Interval Steps_new
+##    <fct>         <int>     <dbl>
+##  1 2012-10-01        0    1.72  
+##  2 2012-10-01        5    0.340 
+##  3 2012-10-01       10    0.132 
+##  4 2012-10-01       15    0.151 
+##  5 2012-10-01       20    0.0755
+##  6 2012-10-01       25    2.09  
+##  7 2012-10-01       30    0.528 
+##  8 2012-10-01       35    0.868 
+##  9 2012-10-01       40    0     
+## 10 2012-10-01       45    1.47  
 ## # ... with 17,558 more rows
 ```
-Now, to check if there are missing values,
+The above dataframe consists of all As imputed by the average number of steps for each interval. Now, to check if there are missing values,
 
 ```r
-anyNA(activityImp$step_new)   #Check for NA values
+anyNA(activity2$Steps_new)   #Check for NA values
 ```
 
 ```
 ## [1] FALSE
 ```
+The nnew dataframe has no missing values
 
+# Now fnding the total number of steps in a day
+grouppbyDay2<-activity2 %>% group_by(Date) %>%
+    summarise(total_steps = sum(Steps_new, na.rm = TRUE))
+
+# Plot histogram
+png("Total_steps_per_day_imputedData.png")
+hist(grouppbyDay2$total_steps, breaks = 30, xlab = "Total steps", col = "light blue",
+     main = " Total number of steps per day")
+abline(v=mean(grouppbyDay2$total_steps),col = "red", lty=2)
+abline(v=median(grouppbyDay2$total_steps),col = "red", lty=2)
+dev.off()
 
 
 
