@@ -68,7 +68,27 @@ abline(v=mean(grouppbyDay2$total_steps),col = "red", lty=2)
 abline(v=median(grouppbyDay2$total_steps),col = "red", lty=2)
 dev.off()
 
+## Are there differences in activity patterns between weekdays and weekends?
+# Create a new factor column separating weekdays and weekend
+activity3<-activity2 %>% 
+    mutate(Day = ifelse(weekdays(as.Date(activity2$Date)) == c("Sunday", "Saturday"),
+                        "weekend","weekday")) %>%
+    group_by(Day)  
 
+groupbyweek<-activity3 %>% group_by(Interval,Day) %>%
+    summarise(average_steps = mean(Steps_new, na.rm = TRUE))
 
-t<-as.POSIXlt(as.Date(activity$date),format = "%Y%m%d %H:%M")
-names(unclass(t))
+# Plot the average steps for weekend and weekdays   
+png("Average_steps_per_week.png")
+g<-ggplot(groupbyweek, aes(Interval, average_steps))
+g + geom_line(color = "blue") + labs(x = "Minutes", 
+                                     y = "Average number of steps")+
+    labs(title = "Average number of steps per interval\nfor weekend and weekday") + theme_bw()+
+    facet_grid(.~Day)
+dev.off()
+
+    
+    
+    
+    
+    

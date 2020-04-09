@@ -144,10 +144,35 @@ abline(v=median(grouppbyDay2$total_steps),col = "red", lty=2)
 
 ![plot of chunk hist2](figure/hist2-1.png)
 
-Here, we can see that after removing the NAs from the dataframe, the mean at 10766.189 coincides with median 10766.189.
-
-
-
-
+Here, we can see that after removing the NAs from the dataframe, the mean at 10766.189 coincides with median 10766.189. It seems like the weight of the values are balanced by imputing the NAs as the average of all days, making the mean coincide with the median.
 
 ## Are there differences in activity patterns between weekdays and weekends?
+A new factor column was added that separated out the weekends from the weekdays.
+
+```r
+# Create a new factor column separating weekdays and weekend
+activity3<-activity2 %>% 
+    mutate(Day = ifelse(weekdays(as.Date(activity2$Date)) == c("Sunday", "Saturday"),
+                        "weekend","weekday")) %>%
+    group_by(Day)  
+```
+Now, an average of all weekdays were taken for each interval, and the same process was carried out for weekdays.
+
+```r
+groupbyweek<-activity3 %>% group_by(Interval,Day) %>%
+    summarise(average_steps = mean(Steps_new, na.rm = TRUE))
+```
+These average number of steps were plotted separately for weekdays and weekends.
+
+```r
+g<-ggplot(groupbyweek, aes(Interval, average_steps))
+g + geom_line(color = "blue") + labs(x = "Minutes", 
+                                     y = "Average number of steps")+
+    labs(title = "Average number of steps per interval for weekend and weekday") + theme_bw()+
+    facet_grid(.~Day)
+```
+
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+
+It looks like the number steps is more unsteady with lots of higher and lower values during weekends. It may mean that during weekends people are more likely to do more activities or just rest, in contrast to weekdays when the number of steps seem to be fairly consistent.
+    
