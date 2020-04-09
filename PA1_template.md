@@ -38,6 +38,7 @@ as NA
 ## What is mean total number of steps taken per day?
 The total number of steps was grouped daily and total steps per day was calculated using the dplyr package.
 
+
 ```r
 library(dplyr)
 library(ggplot2)
