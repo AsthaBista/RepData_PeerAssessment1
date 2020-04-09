@@ -1,5 +1,3 @@
-setwd("C:/Users/Aastha/Desktop/datasciencecoursera/RepData_PeerAssessment1")
-
 library(dplyr)
 library(ggplot2)
 
